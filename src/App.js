@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./components/SearchBar";
+import { VideosArea } from "./components/VideosArea";
+import { FavList } from "./components/FavsList";
+import { Route, Routes } from "react-router-dom";
+import { RootLayout } from "./components/RootLayout";
+import { Auth } from "./components/Auth";
+import { store } from ".";
+import { useState } from "react";
 
 function App() {
+  const [isLogged, setIsLogged] = useState(
+    localStorage.getItem("current user")
+  );
+  store.subscribe(() => {
+    store.getState().authReducer.auth.email
+      ? setIsLogged(true)
+      : setIsLogged(false);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={isLogged ? <RootLayout /> : <Auth />}>
+        <Route
+          index
+          element={
+            <>
+              <SearchBar />
+              <VideosArea />
+            </>
+          }
+        />
+        <Route path="favourites" element={<FavList />} />
+      </Route>
+    </Routes>
   );
 }
 
