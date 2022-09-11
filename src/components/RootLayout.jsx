@@ -15,6 +15,7 @@ export const RootLayout = () => {
       dispatch(synchronizeFavs(currentUser));
     if (localStorage.getItem(`${currentUser}-videos`))
       dispatch(synchronizeVideos(currentUser));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   store.subscribe(() => {
