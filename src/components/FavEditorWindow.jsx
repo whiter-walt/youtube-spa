@@ -13,6 +13,7 @@ export const FavEditorWindow = ({
   title,
   maxRes,
   sort,
+
 }) => {
   const [editFavValue, setEditFavValue] = useState(fav);
   const [searchTitle, setSearchTitle] = useState(title);
