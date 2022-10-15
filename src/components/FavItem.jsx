@@ -39,11 +39,7 @@ export const FavItem = ({ favItem }) => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         isQueryEditable={true}
-        id={id}
-        fav={fav}
-        title={title}
-        maxRes={maxRes}
-        sort={sort}
+        favItem={favItem}
       />
     </>
   );

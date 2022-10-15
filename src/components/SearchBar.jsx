@@ -57,7 +57,7 @@ const SearchBar = () => {
       <FavEditorWindow
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        fav={query}
+        newFav={query}
       />
     </>
   );

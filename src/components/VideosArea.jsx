@@ -9,9 +9,11 @@ import { ErrorAlert } from "./ErrorAlert";
 
 export const VideosArea = () => {
   const [toggleView, setToggleView] = useState(false);
-  const videos = useSelector((state) => state.searchReducer.foundVideos);
-  const lastQuery = useSelector((state) => state.searchReducer.query);
-  const errorMessage = useSelector((state) => state.searchReducer.errorMessage);
+  const {
+    foundVideos: videos,
+    query: lastQuery,
+    errorMessage
+  } = useSelector((state) => state.searchReducer);
 
   return (
     <>

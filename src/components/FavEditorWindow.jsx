@@ -8,21 +8,19 @@ export const FavEditorWindow = ({
   isModalOpen,
   setIsModalOpen,
   isQueryEditable,
-  id,
-  fav,
-  title,
-  maxRes,
-  sort,
+  favItem,
+  newFav,
 
 }) => {
-  const [editFavValue, setEditFavValue] = useState(fav);
+  const { id, fav, title, maxRes, sort } = favItem || {};
+  const [editFavValue, setEditFavValue] = useState(newFav || fav);
   const [searchTitle, setSearchTitle] = useState(title);
   const [sortResults, setSortResults] = useState(sort);
   const [maxResults, setMaxResults] = useState(maxRes);
   const dispatch = useDispatch();
 
   const saveFavHandler = () => {
-    dispatch(addSearchQueryToFavs(fav, searchTitle, sortResults, maxResults));
+    dispatch(addSearchQueryToFavs(newFav, searchTitle, sortResults, maxResults));
     setSearchTitle("");
     setIsModalOpen(false);
   };
